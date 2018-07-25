@@ -55,7 +55,6 @@ public class ArticleDetailFragment extends Fragment implements
     private ColorDrawable mStatusBarColorDrawable;
 
     private int mTopInset;
-    // private View mPhotoContainerView;
     private ImageView mPhotoView;
     private int mScrollY;
     private boolean mIsCard = false;
@@ -81,8 +80,6 @@ public class ArticleDetailFragment extends Fragment implements
         fragment.setArguments(arguments);
         return fragment;
     }
-
-    //TODO: implement toolbar's setDisplayHomeAsUpEnabled and setDisplayShowHomeEnabled methods.
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -121,27 +118,10 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
         mDrawInsetsFrameLayout = (FrameLayout)
                 mRootView.findViewById(R.id.draw_insets_frame_layout);
-        /* mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
-            @Override
-            public void onInsetsChanged(Rect insets) {
-                mTopInset = insets.top;
-            }
-        }); */
 
         mScrollView = (NestedScrollView) mRootView.findViewById(R.id.scrollview);
-        /* mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
-            @Override
-            public void onScrollChanged() {
-                mScrollY = mScrollView.getScrollY();
-                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
-                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
-                updateStatusBar();
-            }
-        });*/
-
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
-        //TODO: Removed code 18.07.24
-        //mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
+
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
@@ -172,7 +152,6 @@ public class ArticleDetailFragment extends Fragment implements
                     (int) (Color.blue(mMutedColor) * 0.9));
         }
         mStatusBarColorDrawable.setColor(color);
-        //mDrawInsetsFrameLayout.setInsetBackground(mStatusBarColorDrawable);
     }
 
     static float progress(float v, float min, float max) {
@@ -213,7 +192,6 @@ public class ArticleDetailFragment extends Fragment implements
         //TODO: UPDATE FONT TO MATERIAL-DESIGN APPROVED FONT.
         Typeface typeface = Typeface.create("sans-serif", Typeface.NORMAL);
         bodyView.setTypeface(typeface);
-//        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
@@ -298,14 +276,4 @@ public class ArticleDetailFragment extends Fragment implements
         bindViews();
     }
 
-    /* public int getUpButtonFloor() {
-        if (mPhotoContainerView == null || mPhotoView.getHeight() == 0) {
-            return Integer.MAX_VALUE;
-        }
-
-        // account for parallax
-        return mIsCard
-                ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
-                : mPhotoView.getHeight() - mScrollY;
-    }*/
 }

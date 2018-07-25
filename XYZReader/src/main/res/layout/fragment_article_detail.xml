@@ -4,28 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- FrameLayout
-        android:id="@+id/photo_container"
+    <ImageView
+        android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/detail_title_image"
-        android:background="@color/photo_placeholder"
-        android:elevation="@dimen/photo_container_elevation">
-
-        <! - - suppress AndroidLintContentDescription -->
-        <!-- Image takes up all the screen space horizontally, matches
-        the height of photo_container vertically -->
-        <ImageView
-            android:id="@+id/photo"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/detail_title_image"
-            android:scaleType="centerCrop" />
-
-        <!-- View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/background_protection_height"
-            android:background="@drawable/photo_background_protection" / -->
-
-    <!-- /FrameLayout -->
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/content_description_img"/>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/scrollview"
@@ -92,7 +76,6 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    <!-- UPDATE TO FLOATING ACTION BUTTON -->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/share_fab"
         android:layout_width="@dimen/fab_radius"
@@ -105,6 +88,5 @@
         android:elevation="@dimen/fab_elevation"
         android:src="@drawable/ic_share"
         android:stateListAnimator="@anim/fab_state_list_anim" />
-
 
 </FrameLayout>
